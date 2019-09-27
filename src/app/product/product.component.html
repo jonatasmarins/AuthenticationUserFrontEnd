@@ -1,0 +1,83 @@
+<div class="container">
+  <section class="row-flex">
+    <div class="col-flex">
+      <div class="form-group form-inline">
+        <input type="text" class="form-control" placeholder="Filtrar pelo nome do produto" id="inputDefault"
+          [(ngModel)]="nameFilter" />
+        <button type="button" (click)="getProducts()" class="btn btn-primary">Enviar</button>
+      </div>
+    </div>
+    <div class="col-flex"></div>
+    <div class="col-flex">
+      <button type="button" class="btn btn-primary" (click)="openDetailCreateProduct()">Inserir</button>
+    </div>
+  </section>
+  <section>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col" [class.active]="order === 'title'" (click)="setOrder('title')">
+            Titulo
+            <span [hidden]="reverse">▼</span>
+            <span [hidden]="!reverse">▲</span>
+          </th>
+          <th scope="col">Descrição</th>
+          <th scope="col" (click)="setOrder('price')">
+            Preço
+            <span [hidden]="reverse">▼</span>
+            <span [hidden]="!reverse">▲</span>
+          </th>
+          <th scope="col" (click)="setOrder('quantity')">
+            Quantidade
+            <span [hidden]="reverse">▼</span>
+            <span [hidden]="!reverse">▲</span>
+          </th>
+          <th scope="col" (click)="setOrder('category')">
+            Categoria
+            <span [hidden]="reverse">▼</span>
+            <span [hidden]="!reverse">▲</span>
+          </th>
+          <th>
+            Ações
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let prod of products
+                  | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize
+                  | orderBy: order:reverse:'case-insensitive'">
+          <td>
+            <ngb-highlight [result]="prod.title"></ngb-highlight>
+          </td>
+          <td>
+            <ngb-highlight [result]="prod.description"></ngb-highlight>
+          </td>
+          <td>
+            <ngb-highlight [result]="prod.price"></ngb-highlight>
+          </td>
+          <td>
+            <ngb-highlight [result]="prod.quantity"></ngb-highlight>
+          </td>
+          <td>
+            <ngb-highlight [result]="prod.categoryTitle"></ngb-highlight>
+          </td>
+          <td>
+            <button type="button" class="btn btn-outline-primary" (click)="edit(prod)">Editar</button>
+            <button type="button" class="btn btn-outline-primary" (click)="delete(prod)">Deletar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="d-flex justify-content-between p-2">
+      <ngb-pagination class="d-flex justify-content-center" [collectionSize]="collectionSize" [(page)]="page"
+        [pageSize]="pageSize">
+      </ngb-pagination>
+
+      <select class="custom-select" style="width: auto" name="pageSize" [(ngModel)]="pageSize">
+        <option [ngValue]="5">5 items per page</option>
+        <option [ngValue]="10">10 items per page</option>
+        <option [ngValue]="20">20 items per page</option>
+      </select>
+    </div>
+  </section>
+</div>

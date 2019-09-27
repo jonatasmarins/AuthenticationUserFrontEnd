@@ -1,0 +1,5 @@
+  <div class="form-group">
+    <select class="custom-select" [(ngModel)]="FormValue" (change)="change($event)">
+      <option *ngFor="let item of categories" value="{{ item.id }}">{{ item.title }}</option>
+    </select>
+  </div>

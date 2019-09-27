@@ -1,0 +1,9 @@
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <form [formGroup]="formLogin" (submit)="logon()">
+      <input type="text" id="login" class="fadeIn second" name="login" placeholder="login" formControlName="login">
+      <input type="text" id="password" class="fadeIn third" name="login" placeholder="Senha" formControlName="password">
+      <input type="submit" class="fadeIn fourth" value="Enviar" [disabled]="formLogin.invalid">
+    </form>
+  </div>
+</div>

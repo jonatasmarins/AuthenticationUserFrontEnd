@@ -1,0 +1,41 @@
+<div class="modal-header">
+  <h4 class="modal-title">{{titleDialog}}</h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<section>
+  <form [formGroup]="formProduct" (submit)="Save()">
+    <div class="modal-body">
+
+      <div class="form-group">
+        <label class="col-form-label" for="inputDefault">Titulo</label>
+        <input type="text" class="form-control" placeholder="Entre com o Titulo" formControlName="title">
+      </div>
+      <div class="form-group">
+        <label class="col-form-label" for="inputDefault">Descrição</label>
+        <input type="text" class="form-control" placeholder="Entre com a Descrição" formControlName="description">
+      </div>
+      <div class="form-group">
+        <label class="col-form-label" for="inputDefault">Preço</label>
+        <input currencyMask type="text" class="form-control" placeholder="Entre com o Preço" formControlName="price">
+      </div>
+      <div class="form-group">
+        <label class="col-form-label" for="inputDefault">Quantidade</label>
+        <input type="number" class="form-control" placeholder="Entre com a Quantidade" id="inputDefault"
+          formControlName="quantity">
+      </div>
+      <div class="form-group">
+        <label class="col-form-label" for="inputDefault">Categoria</label>
+        <app-drop-down-category formControlName="category" [FormValue]="category"></app-drop-down-category>
+        <!-- <input type="text" class="form-control" placeholder="Selecione a categoria" id="inputDefault"
+          formControlName="category"> -->
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="submit" class="btn btn-primary" [disabled]="formProduct.invalid">Enviar</button>
+      <button type="reset" class="btn btn-primary" (click)="clean()">Limpar</button>
+      <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
+    </div>
+  </form>
+</section>
