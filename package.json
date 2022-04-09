@@ -24,7 +24,7 @@
     "bootstrap": "^4.3.1",
     "bootswatch": "^4.3.1",
     "jquery": "^3.4.1",
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
     "ng2-currency-mask": "^5.3.1",
     "ngx-order-pipe": "^2.0.4",
     "ngx-spinner": "^8.0.3",
